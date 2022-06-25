@@ -33,10 +33,10 @@ public class Main {
 //User function Template for Java
 
 class Solution {
-    int transitionPoint(int arr[], int n) {
+    int transitionPoint(int arr[], int left, int right) {
         // code here
-        int left = 0;
-        int right = n-1;
+        // int left = 0;
+        // int right = n-1;
         int ans = -1;
         while(left <= right){
             int mid = left+(right-left)/2;
@@ -57,7 +57,7 @@ class Solution {
         int ans = -1;
         int noOfOnes = 0;
         for(int i = 0; i<n;++i){
-            int transitionPt = transitionPoint(arr[i], m);
+            int transitionPt = transitionPoint(arr[i], 0, right);
             if(transitionPt != -1 && m-transitionPt > noOfOnes){
                 ans = i;
                 noOfOnes = m-transitionPt;
