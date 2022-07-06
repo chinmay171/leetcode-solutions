@@ -29,18 +29,32 @@ class GFG
 
 class Solution
 {
-    public int memo(int n,int m, int[] dp){
-        if(n < m)return 1;
-        if(n == m)return 2;
-        if(dp[n] != 0)return dp[n];
-        int ans1 = memo(n-1,m, dp);
-        int ans2 = memo(n-m,m, dp);
-        return dp[n] = (ans1+ans2)%1000000007;
-    }
-    public int countWays(int n, int m)
-    {
-        // Code here
-        int[] dp = new int[n+1];
-        return memo(n,m,dp);
+    // public int memo(int n,int m, int[] dp){
+    //     if(n < m)return 1;
+    //     if(n == m)return 2;
+    //     if(dp[n] != 0)return dp[n];
+    //     int ans1 = memo(n-1,m, dp);
+    //     int ans2 = memo(n-m,m, dp);
+    //     return dp[n] = (ans1+ans2)%1000000007;
+    // }
+    public int countWays(int n, int m){
+    // {
+    //     // Code here
+    //     int[] dp = new int[n+1];
+    //     return memo(n,m,dp);
+    // }
+            if(n<m)return 1;
+            if(n==m)return 2;
+            Deque<Integer> dp = new ArrayDeque<>();
+            for(int i = 1; i<m; ++i){
+                dp.add(1);
+            }
+            dp.add(2);
+            for(int i = m+1; i<=n; ++i){
+                int ans = (dp.getFirst()+dp.getLast())% 1000000007;
+                dp.removeFirst();
+                dp.addLast(ans);
+            }
+            return dp.getLast();
     }
 }
