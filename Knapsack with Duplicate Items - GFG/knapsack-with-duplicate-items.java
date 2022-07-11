@@ -32,25 +32,39 @@ class GFG{
 //User function Template for Java
 
 class Solution{
-    static int memo(int n,int idx, int caps, int[] profit, int[] Itemwt, int[][] dp){
-        if(idx == n)return 0;
-        if(dp[idx][caps] != -1)return dp[idx][caps];
-        int yes = 0;
-        if(caps >= Itemwt[idx]){
-            yes = memo(n,idx, caps- Itemwt[idx], profit, Itemwt, dp) + profit[idx];
-        }
-        int no = memo(n, idx+1, caps, profit, Itemwt, dp);
-        return dp[idx][caps] =Math.max(yes, no);
-    }
+    // static int memo(int n,int idx, int caps, int[] profit, int[] Itemwt, int[][] dp){
+    //     if(idx == n)return 0;
+    //     if(dp[idx][caps] != -1)return dp[idx][caps];
+    //     int yes = 0;
+    //     if(caps >= Itemwt[idx]){
+    //         yes = memo(n,idx, caps- Itemwt[idx], profit, Itemwt, dp) + profit[idx];
+    //     }
+    //     int no = memo(n, idx+1, caps, profit, Itemwt, dp);
+    //     return dp[idx][caps] =Math.max(yes, no);
+    // }
     static int knapSack(int N, int caps, int profit[], int Itemwt[])
     {
         // code here
-        int[][] dp = new int[N+1][caps+1];
-        for(int i = 0; i<= N; ++i){
-            for(int j = 0; j<=caps; ++j){
-                dp[i][j] = -1;
+        // int[][] dp = new int[N+1][caps+1];
+        // for(int i = 0; i<= N; ++i){
+        //     for(int j = 0; j<=caps; ++j){
+        //         dp[i][j] = -1;
+        //     }
+        // }
+        // return memo(N,0, caps, profit, Itemwt,dp);
+        
+        int[] dp = new int[caps+1];
+        
+        for(int item = 1; item<= N; ++item){
+            for(int cap = 1; cap <= caps; ++cap){
+                int no = dp[cap];
+                int yes = (cap >= Itemwt[item-1])
+                            ? dp[cap- Itemwt[item-1]] + profit[item-1]
+                            : -1;
+                
+                dp[cap] = Math.max(no, yes);
             }
         }
-        return memo(N,0, caps, profit, Itemwt,dp);
+        return dp[caps];
     }
 }
