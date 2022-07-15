@@ -26,26 +26,42 @@ class GfG
 
 class Solution{
     
-    public int memo(int idx, int[] arr, int target, int[][] dp){
-        if(target < 0)return 0;
-        if(idx == arr.length){
-            if(target == 0)return 1;
-            return 0;
-        }
-        if(dp[idx][target] != -1)return dp[idx][target];
-        int no = memo(idx+1, arr, target, dp);
-        int yes = memo(idx+1, arr, target-arr[idx], dp);
-        return dp[idx][target] = (no+yes)%1000000007 ;
-    }
+    // public int memo(int idx, int[] arr, int target, int[][] dp){
+    //     if(target < 0)return 0;
+    //     if(idx == arr.length){
+    //         if(target == 0)return 1;
+    //         return 0;
+    //     }
+    //     if(dp[idx][target] != -1)return dp[idx][target];
+    //     int no = memo(idx+1, arr, target, dp);
+    //     int yes = memo(idx+1, arr, target-arr[idx], dp);
+    //     return dp[idx][target] = (no+yes)%1000000007 ;
+    // }
 	public int perfectSum(int arr[],int n, int sum) 
 	{ 
 	    // Your code goes here
-	    int[][] dp = new int[arr.length+1][sum+1];
-	    for(int i = 0; i<=arr.length; ++i){
-	        for(int j = 0; j<=sum; ++j){
-	            dp[i][j] = -1;
-	        }
-	    }
-	    return memo(0, arr, sum, dp);
+	   // int[][] dp = new int[arr.length+1][sum+1];
+	   // for(int i = 0; i<=arr.length; ++i){
+	   //     for(int j = 0; j<=sum; ++j){
+	   //         dp[i][j] = -1;
+	   //     }
+	   // }
+	   // return memo(0, arr, sum, dp);
+	   
+	   int[][] dp = new int[n+1][sum+1];
+	   
+	   
+	   dp[0][0] = 1;
+	   
+	   for(int i = 1; i<= n; ++i){
+	       for(int j = 0; j<= sum; ++j){
+	           int no  = dp[i-1][j];
+	           int yes = (j >= arr[i-1]) ? dp[i-1][j-arr[i-1]] : 0;
+	           
+	           dp[i][j] = (yes + no)% 1000000007;
+	       }
+	   }
+	   
+	   return dp[n][sum];
 	} 
 }
