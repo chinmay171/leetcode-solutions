@@ -17,20 +17,54 @@ class Solution {
         //     }
         // }
         // return memo(nums, 0, -1, dp);
-        int n = nums.length;
-        int[] dp = new int[n];
+//         int n = nums.length;
+//         int[] dp = new int[n];
         
-        int maxLIS = Integer.MIN_VALUE;
-        for(int i = 0; i<n; ++i){
-            dp[i] = 1;
+//         int maxLIS = Integer.MIN_VALUE;
+//         // ArrayList<Integer> LIS = new ArrayList<>();
+//         for(int i = 0; i<n; ++i){
+//             // ArrayList<Integer> currLIS = new ArrayList<>();
+//             dp[i] = 1;
             
-            for(int j = 0; j<i; ++j){
-                if(nums[i] > nums[j]){
-                    dp[i] = Math.max(dp[i], dp[j]+1);
-                }
+//             for(int j = 0; j<i; ++j){
+//                 if(nums[i] > nums[j]){
+//                     dp[i] = Math.max(dp[i], dp[j]+1);
+//                     // currLIS.add(nums[i]);
+//                 }
+//             }
+//             maxLIS = Math.max(maxLIS, dp[i]);
+//             // if(LIS.size() < currLIS.size()){
+//             //     LIS = currLIS;
+//             // }
+//         }
+//         return maxLIS;
+        
+        int n = nums.length;
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i = 0; i<n; ++i){
+            int lb = lowerBound(arr, nums[i]);
+            if(arr.size() == lb){
+                arr.add(nums[i]);
+            }else{
+                arr.set(lb, nums[i]);
             }
-            maxLIS = Math.max(maxLIS, dp[i]);
         }
-        return maxLIS;
+        return arr.size();
+    }
+    public int lowerBound(ArrayList<Integer> arr, int target){
+        int low = 0;
+        int high = arr.size()-1;
+        int idx = arr.size();
+        while(low<=high){
+            int mid = low + (high - low)/2;
+            
+            if(arr.get(mid) < target){
+                low = mid+1;
+            }else{
+                high = mid-1;
+                idx = mid;
+            }
+        }
+        return idx;
     }
 }
