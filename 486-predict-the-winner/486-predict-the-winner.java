@@ -5,12 +5,10 @@ class Solution {
         
         if(dp[i][j] != -1)return dp[i][j];
         
-        int c1 = memo(nums, i+2, j, dp);
-        int c2 = memo(nums, i+1, j-1, dp);
-        int c3 = memo(nums, i, j-2, dp);
+        int c1 = memo(nums, i+1, j, dp);
+        int c2 = memo(nums, i, j-1, dp);
         
-        return dp[i][j] = Math.max(nums[i] + Math.min(c1, c2),
-                        nums[j] + Math.min(c2, c3));
+        return dp[i][j] = Math.max(nums[i] - c1, nums[j] - c2);
     }
     public boolean PredictTheWinner(int[] nums) {
         int[][] dp = new int[nums.length][nums.length];
@@ -20,14 +18,9 @@ class Solution {
             }
         }
         
-        int aScore = memo(nums, 0, nums.length-1, dp);
+        int diff = memo(nums, 0, nums.length-1, dp);
         
-        int total = 0;
-        for(int i = 0; i<nums.length; ++i){
-            total += nums[i];
-        }
-        int bScore = total - aScore;
-        if(aScore >= bScore)return true;
+        if(diff >= 0) return true;
         return false;
     }
 }
