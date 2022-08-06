@@ -3,14 +3,18 @@ class Solution {
     public int numTilings(int n) {
         if(n == 1)return 1;
         if(n == 2)return 2;
-        int[] dp = new int[n+1];
-        dp[0] = 1;
-        dp[1] = 1;
-        dp[2] = 2;
+        // int[] dp = new int[n+1];
+        int dp0 = 1;
+        int dp1 = 1;
+        int dp2 = 2;
         
         for(int i = 3; i<=n; ++i){
-            dp[i] = ((2 * dp[i-1])% m + dp[i-3])% m;
+            int curr = ((2 * dp2)% m + dp0)% m;
+            
+            dp0 = dp1;
+            dp1 = dp2;
+            dp2 = curr;
         }
-        return dp[n];
+        return dp2;
     }
 }
