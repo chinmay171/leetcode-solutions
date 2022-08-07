@@ -1,7 +1,7 @@
 class Solution {
     public void printPaths(int src, int dest, List<Integer> path, List<List<Integer>> paths, int[][] graph, boolean[] vis){
         
-        if(vis[src] = false)return;
+        if(vis[src] == true)return;
         
         vis[src] = true;
         path.add(src);
