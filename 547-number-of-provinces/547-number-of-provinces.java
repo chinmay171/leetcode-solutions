@@ -23,25 +23,35 @@ class Graph{
     }
 }
 class Solution {
-    public int findCircleNum(int[][] isConnected) {
-        int n = isConnected.length;
-        int m = isConnected[0].length;
-        Graph g = new Graph(n);
+    public void dfs(int[][] graph, int src, boolean[] vis){
         
-        for(int i = 0; i<n; ++i){
-            for(int j = 0; j<m; ++j){
-                if(i != j && isConnected[i][j] == 1){
-                    g.addEdge(i, j);
-                }
+        vis[src] = true;
+        
+        for(int i = 0; i < graph.length; ++i){
+            if(vis[i] == false && graph[src][i] == 1){
+                dfs(graph, i, vis);
             }
         }
+    }
+    public int findCircleNum(int[][] isConnected) {
+//         int n = isConnected.length;
+//         int m = isConnected[0].length;
+//         Graph g = new Graph(n);
         
-        boolean[] vis = new boolean[n];
+//         for(int i = 0; i<n; ++i){
+//             for(int j = 0; j<m; ++j){
+//                 if(i != j && isConnected[i][j] == 1){
+//                     g.addEdge(i, j);
+//                 }
+//             }
+//         }
+        
+        boolean[] vis = new boolean[isConnected.length];
         int count = 0;
-        for(int i = 0; i < n; ++i){
+        for(int i = 0; i < isConnected.length; ++i){
             if(vis[i] == false){
                 count++;
-                g.dfs(i, vis);
+                dfs(isConnected, i, vis);
             }
         }
         
