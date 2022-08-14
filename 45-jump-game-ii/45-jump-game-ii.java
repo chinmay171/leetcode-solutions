@@ -10,8 +10,8 @@ class Solution {
                 min = Math.min(min, memo(n+i, jumps, dp)+1l);
             }
         }
-        dp[n] = min;
-        return min;
+        // dp[n] = min;
+        return dp[n] = min;
     }
     public int jump(int[] nums) {
         long[] dp = new long[nums.length+1];
