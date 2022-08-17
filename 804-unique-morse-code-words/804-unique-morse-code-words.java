@@ -1,45 +1,19 @@
 class Solution {
-    String[] morseCode = {
-        ".-",
-        "-...",
-        "-.-.",
-        "-..",
-        ".",
-        "..-.",
-        "--.",
-        "....",
-        "..",
-        ".---",
-        "-.-",
-        ".-..",
-        "--",
-        "-.",
-        "---",
-        ".--.",
-        "--.-",
-        ".-.",
-        "...",
-        "-",
-        "..-",
-        "...-",
-        ".--",
-        "-..-",
-        "-.--",
-        "--.."
-    };
+    String[] morseCode = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
+
     public int uniqueMorseRepresentations(String[] words) {
-        HashMap<Character, String> map = new HashMap<>();
-        int idx = 0;
-        for(char c = 'a'; c <= 'z'; c++){
-            map.put(c, morseCode[idx++]);
-        }
+        // HashMap<Character, String> map = new HashMap<>();//create hashmap 
+        // int idx = 0;
+        // for(char c = 'a'; c <= 'z'; c++){
+        //     map.put(c, morseCode[idx++]);
+        // }
         
         HashMap<String, Integer> res = new HashMap<>();
         
         for(String word : words){
             String transformation = "";
             for(int i = 0; i < word.length(); ++i){
-                transformation = transformation + map.get(word.charAt(i));
+                transformation = transformation + morseCode[(word.charAt(i))-'a'];
             }
             
             if(res.containsKey(transformation) == false){
