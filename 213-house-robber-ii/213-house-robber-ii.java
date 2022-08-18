@@ -1,38 +1,37 @@
 class Solution {
-    public int memo(int[] nums, int prevCall, int idx,int n, int[][] dp){
-        if(idx == n+1){
-            return 0;
+    
+    public static int memo(int idx, int lastCall, int n, int[] nums, int[][] dp){
+        if(idx == n)return 0;
+        
+        if(dp[idx][lastCall] != -1)return dp[idx][lastCall];
+        
+        int  rob = 0;
+        int noRob = 0;
+        if(lastCall == 0){
+            rob = memo(idx+1, 1, n, nums, dp) + nums[idx];
         }
-        if(dp[idx][prevCall] != -1)return dp[idx][prevCall];
-        int ans1 = 0;
-        int ans2 = 0;
-        if(prevCall == 0){
-            ans1 = memo(nums, 1, idx+1, n,dp)+nums[idx];
-        }else{
-            ans1 = 0;
-        }
-        ans2 = memo(nums, 0, idx+1, n,dp);
-        return dp[idx][prevCall] = Math.max(ans1, ans2);
+        noRob = memo(idx+1, 0, n, nums, dp);
+        
+        return dp[idx][lastCall] = Math.max(rob, noRob);
+        
     }
+    
     public int rob(int[] nums) {
-        if(nums.length == 0)return 0;
         if(nums.length == 1)return nums[0];
-        int[][] dp1 = new int[nums.length+1][2];
-        for(int i = 0; i<nums.length; ++i){
-            for(int j = 0; j<2; j++){
-                dp1[i][j] = -1;
-            }
+        int[][] dp = new int[nums.length +1][2];
+        for(int i = 0; i <= nums.length; ++i){
+            dp[i][0] = -1;
+            dp[i][1] = -1;
         }
-        int res1 = memo(nums, 0, 0,nums.length-2, dp1);
+        int ans1 = memo(0, 0, nums.length-1, nums, dp);
         
-        int[][] dp2 = new int[nums.length+1][2];
-        for(int i = 0; i<nums.length; ++i){
-            for(int j = 0; j<2; j++){
-                dp2[i][j] = -1;
-            }
+        int[][] dp2 = new int[nums.length +1][2];
+        for(int i = 0; i <= nums.length; ++i){
+            dp2[i][0] = -1;
+            dp2[i][1] = -1;
         }
-        int res2 = memo(nums, 0, 1,nums.length-1, dp2);
+        int ans2 = memo(1, 0, nums.length, nums, dp2);
         
-        return Math.max(res1, res2);
+        return Math.max(ans1, ans2);
     }
 }
