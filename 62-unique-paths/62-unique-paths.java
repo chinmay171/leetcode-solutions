@@ -1,21 +1,19 @@
 class Solution {
-    public int memo(int i, int j, int m, int n, int[][] dp){
-        if(i > m || j > n)return 0;
-        if(i == m && j == n)return 1;
-        if(dp[i][j] != -1)return dp[i][j];
-        int ans = 0; 
-        ans += memo(i+1, j, m, n, dp);
-        ans += memo(i, j+1, m, n, dp);
+    public int memo(int r, int c, int m, int n, int[][] dp){
+        if(r == m || c == n) return 0;
+        if(r == m-1 && c == n-1)return 1;
         
-        return dp[i][j] = ans;
+        if(dp[r][c] != 0)return dp[r][c];
+        
+        int ans = 0;
+        ans += memo(r+1, c, m, n, dp);
+        ans += memo(r, c+1, m, n, dp);
+        
+        return dp[r][c] = ans;
     }
     public int uniquePaths(int m, int n) {
-        int[][] dp = new int[m+1][n+1];
-        for(int i = 0; i<m; ++i){
-            for(int j = 0; j<n; ++j){
-                dp[i][j] = -1;
-            }
-        }
-        return memo(0, 0, m-1, n-1, dp);
+        int[][] dp = new int[m][n];
+        
+        return memo(0, 0, m, n, dp);
     }
 }
