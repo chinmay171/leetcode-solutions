@@ -1,22 +1,23 @@
 class Solution {
-    public int helper(List<List<Integer>> triangle, int i, int j, int[][] dp,int n){
-        if(i == n-1)return triangle.get(i).get(j);
-        if(j>=n)return Integer.MAX_VALUE;
-        if(dp[i][j] != -1)return dp[i][j];
-        int down = helper(triangle, i+1, j, dp,n);
-        int dia = helper(triangle, i+1, j+1, dp,n);
-        
-        return dp[i][j] = Math.min(down, dia)+triangle.get(i).get(j);
-    }
-    public int minimumTotal(List<List<Integer>> triangle) {
-        int n = triangle.size();
-        int[][] dp = new int[n+1][n+1];
-        for(int i = 0; i<n;++i){
-            for(int j = 0; j<n;++j){
-                dp[i][j] = -1;
-            }
+    public int memo(int r, int c, List<List<Integer>> triangle, int[][] dp){
+        if(r == triangle.size()-1){
+            return triangle.get(r).get(c);
         }
         
-        return helper(triangle, 0, 0, dp, n);
+        if(dp[r][c] != -1)return dp[r][c];
+        
+        int left = memo(r+1, c, triangle, dp);
+        int right = memo(r+1, c+1, triangle, dp);
+        
+        return dp[r][c] = Math.min(left, right) + triangle.get(r).get(c);
+    }
+    
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int[][] dp = new int[triangle.size()+1][triangle.size()+1];
+        for(int i = 0; i < triangle.size(); ++i)
+            for(int j = 0; j < triangle.size(); ++j)
+                dp[i][j] = -1;
+        
+        return memo(0, 0, triangle, dp);
     }
 }
