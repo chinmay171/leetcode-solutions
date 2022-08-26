@@ -1,28 +1,36 @@
 class Solution {
-    public int memo(int[][] matrix, int row, int col,int[][] dp){
-        if(col < 0 || col >= matrix[0].length)return Integer.MAX_VALUE;
-        if(row == matrix.length-1)return matrix[row][col];
-        if(dp[row][col] != -1)return dp[row][col];
-        int dPlus1 = memo(matrix, row+1, col-1, dp);
-        int down = memo(matrix, row+1, col, dp);
-        int dMinus1 = memo(matrix, row+1, col+1, dp);
+    
+    public int memo(int r, int c, int maxR, int maxC, int[][] matrix,int[][] dp){
+        if(c < 0 || c >= maxC)return Integer.MAX_VALUE;
         
-        return dp[row][col] = Math.min(down, Math.min(dPlus1, dMinus1)) + matrix[row][col];
+        if(r == maxR-1)return matrix[r][c];
+        
+        if(dp[r][c] != -1)return dp[r][c];
+        
+        int downLeft = memo(r+1, c-1, maxR, maxC, matrix, dp);
+        int down = memo(r+1, c, maxR, maxC, matrix, dp);
+        int downRight = memo(r+1, c+1, maxR, maxC, matrix, dp);
+        
+        return dp[r][c] = Math.min(down, Math.min(downLeft, downRight)) + matrix[r][c];
     }
+    
     public int minFallingPathSum(int[][] matrix) {
-        int row = matrix.length;
-        int col = matrix[0].length; 
+        int n = matrix.length;
+        int m = matrix[0].length;
         
-        int[][] dp = new int[row+1][col+1];
-        for(int i=0; i<row; ++i){
-            for(int j = 0; j<col; ++j){
+        int[][] dp = new int[n+1][m+1];
+        
+        for(int i = 0; i<= n; ++i){
+            for(int j = 0; j<= m; ++j){
                 dp[i][j] = -1;
             }
         }
+        
         int ans = Integer.MAX_VALUE;
-        for(int i = 0; i<row; ++i){
-            ans = Math.min(ans, memo(matrix, 0, i, dp));
+        for(int i = 0; i < m; ++i){
+            ans = Math.min(ans, memo(0, i, n, m, matrix, dp));
         }
+        
         return ans;
     }
 }
