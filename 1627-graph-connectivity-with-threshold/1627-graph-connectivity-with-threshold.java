@@ -41,7 +41,7 @@ class Solution {
     public List<Boolean> areConnected(int n, int threshold, int[][] queries) {
         DSU sets = new DSU(n+1);
         
-        for(int i = 1; i <= n; ++i){
+        for(int i = threshold+1; i <= n; ++i){
             for(int j = i; j <= n; j = j+i){
                 if(isEdge(i, j, threshold) == true){
                     sets.union(i, j);
