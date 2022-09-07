@@ -1,23 +1,23 @@
 class Solution {
     public int numberOfArithmeticSlices(int[] nums) {
         if(nums.length < 3)return 0;
-        int ans = 0;
-        int currAns = 2;
-        int diff = nums[1]-nums[0];
-        for(int i = 2; i<nums.length; ++i){
-            int currDiff = nums[i]-nums[i-1];
-            
-            if(currDiff == diff){
-                currAns++;
+        
+        int count = 0;
+        int apLength = 2;
+        int diff = nums[1] - nums[0];
+        
+        for(int i = 2; i < nums.length; ++i){
+            if( (nums[i] - nums[i-1]) == diff){
+                apLength++;
             }else{
-                currAns = 2;
-                diff = currDiff;
+                apLength = 2;
+                diff = nums[i] - nums[i-1];
             }
             
-            if(currAns >= 3){
-                ans = ans + (currAns-2);
+            if(apLength >= 3){
+                count += (apLength - 2);
             }
         }
-        return ans;
+        return count;
     }
 }
