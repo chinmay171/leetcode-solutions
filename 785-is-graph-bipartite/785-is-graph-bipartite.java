@@ -1,19 +1,21 @@
 class Solution {
     
-    public boolean dfs(int src, int set, int[][]graph, int[] vis){
+    public boolean dfs(int src, int[][] graph, int[] vis, int count){
         if(vis[src] != -1){
-            if(vis[src] != set)return false;
-            return true;
-        }
-        
-        vis[src] = set;
-        
-        for(int nbr : graph[src]){
-            if(dfs(nbr, 1-set, graph, vis) == false){
+            if(vis[src]%2 == count%2){
+                return true;
+            }else{
                 return false;
             }
         }
         
+        vis[src] = count % 2;
+        
+        for(int nbr : graph[src]){
+            if(dfs(nbr, graph, vis, count+1) == false){
+                return  false;
+            }
+        }
         return true;
     }
     
@@ -22,11 +24,10 @@ class Solution {
         Arrays.fill(vis, -1);
         
         for(int i = 0; i < graph.length; ++i){
-            if(vis[i] == -1 && dfs(i, 0, graph, vis) == false){
+            if(vis[i] == -1 && dfs(i, graph, vis, 0) == false){
                 return false;
             }
         }
-        
         return true;
     }
 }
