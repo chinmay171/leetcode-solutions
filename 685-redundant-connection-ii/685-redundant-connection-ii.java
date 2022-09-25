@@ -18,9 +18,8 @@ class Solution {
                 parent[lx] = ly;
                 rank[ly]++;
             }
-        }else{
-            return false;
         }
+        else return false;
         return true;
     }
     
@@ -35,12 +34,7 @@ class Solution {
         for(int i=0;i<edges.length;i++){
             if(i==ex) continue;
             boolean b=union(edges[i][0],edges[i][1],parent,rank);
-            if(b==false){
-                ans=new int[2];
-                ans[0]=edges[i][0];
-                ans[1]=edges[i][1];
-                return ans;
-            }
+            if(b==false) return edges[i];
         }
         
         return ans;
@@ -55,30 +49,16 @@ class Solution {
             if(indig[edges[i][1]]!=-1){
                 bl2=indig[edges[i][1]];
                 bl1=i;
-                // System.out.println(edges[bl1][0]+" "+edges[bl1][1]);
-                //     System.out.println(edges[bl2][0]+" "+edges[bl2][1]);
-                break;
-                
-            }else{
-                indig[edges[i][1]]=i;
+                break;  
             }
+            else indig[edges[i][1]]=i;
         }
         if(bl1==-1 && bl2==-1){
-            // System.out.println("Hello");
-          return  findRedundantConnection(edges,-1);
+          return findRedundantConnection(edges,-1);
         }else{
             int ans[]= findRedundantConnection(edges,bl1);
-            if(ans.length==0) {
-                int fans[]=new int[2];
-                fans[0]=edges[bl1][0];
-                fans[1]=edges[bl1][1];
-                return fans;
-            }else{
-                 int fans[]=new int[2];
-                fans[0]=edges[bl2][0];
-                fans[1]=edges[bl2][1];
-                return fans;
-            }
+            if(ans.length==0) return edges[bl1];
+            else return edges[bl2];
         }
     }
 }
