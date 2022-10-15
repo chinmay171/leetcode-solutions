@@ -10,27 +10,26 @@
  */
 class Solution {
     public ListNode oddEvenList(ListNode head) {
-        ListNode first = new ListNode(-1);
-        ListNode second = new ListNode(-1);
+        ListNode fHead = new ListNode(-1);
+        ListNode sHead = new ListNode(-1);
         
-        ListNode fTail = first;
-        ListNode sTail = second;
-        
+        ListNode fTail = fHead;
+        ListNode sTail = sHead;
         while(head != null){
             fTail.next = head;
-            fTail = head;
+            fTail = fTail.next;
             head = head.next;
             
             if(head != null){
                 sTail.next = head;
-                sTail = head;
+                sTail = sTail.next;
                 head = head.next;
             }
         }
         
         sTail.next = null;
-        fTail.next = second.next;
+        fTail.next = sHead.next;
         
-        return first.next;
+        return fHead.next;
     }
 }
