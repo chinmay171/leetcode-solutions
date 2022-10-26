@@ -89,7 +89,7 @@ class Solution{
         int firstOcc = firstOccurance(arr, x);
         int lastOcc = lastOccurance(arr, x);
         
-        if(firstOcc == -1 || lastOcc == -1){
+        if(firstOcc == -1 && lastOcc == -1){
             ArrayList<Integer> res = new ArrayList<>();
             res.add(-1);
             return res;
