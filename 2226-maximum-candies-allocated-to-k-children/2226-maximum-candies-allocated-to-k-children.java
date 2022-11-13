@@ -21,14 +21,13 @@ class Solution {
             high = Math.max(i, high);
         }
         
-        while(low < high){
+        while(low <= high){
             int mid = low + (high - low) / 2;
             
             if(check(candies, k, mid)) low = mid + 1;
-            else high = mid;
+            else high = mid - 1;
         }
         
-        // return low - 1;
-        return check(candies, k, low) ? low : low-1;
+        return low - 1;
     }
 }
