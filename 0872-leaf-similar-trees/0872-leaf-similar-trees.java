@@ -43,17 +43,6 @@ class Solution {
         dfs1(root1);
         dfs2(root2);
         
-        int[] a1 = new int[arr1.size()];
-        int[] a2 = new int[arr2.size()];
-        
-        for(int i = 0; i < arr1.size(); ++i) a1[i] = arr1.get(i);
-        for(int i = 0; i < arr2.size(); ++i) a2[i] = arr2.get(i);
-        
-        if(a1.length != a2.length) return false;
-        
-        for(int i = 0; i < a1.length; ++i){
-            if(a1[i] != a2[i]) return false;
-        }
-        return true;
+        return arr1.equals(arr2);
     }
 }
