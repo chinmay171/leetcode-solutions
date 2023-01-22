@@ -30,22 +30,35 @@ class GFG
 
 class Solution
 {
-    List<String> ans = new ArrayList<>();
-    public void recursion(String input, int idx, String output){
-        if(idx >= input.length()){
-            if(output.length() > 0) ans.add(output);
-            return;
-        }
+    // List<String> ans = new ArrayList<>();
+    // public void recursion(String input, int idx, String output){
+    //     if(idx >= input.length()){
+    //         if(output.length() > 0) ans.add(output);
+    //         return;
+    //     }
         
-        //yes
-        recursion(input, idx+1, output + input.charAt(idx));
-        //no
-        recursion(input, idx+1, output);
-    }
+    //     //yes
+    //     recursion(input, idx+1, output + input.charAt(idx));
+    //     //no
+    //     recursion(input, idx+1, output);
+    // }
     public List<String> AllPossibleStrings(String s)
     {
-        recursion(s, 0, "");
-        Collections.sort(ans);
-        return ans;
+        // recursion(s, 0, "");
+        // Collections.sort(ans);
+        // return ans;
+        List<String> res = new ArrayList<>();
+        int n = s.length();
+        for(int decimal = 1; decimal < (1 << n); ++decimal){
+            String subset = "";
+            for(int bit = 0; bit < n; ++bit){
+                if((decimal & (1 << bit)) != 0){
+                    subset += (s.charAt(bit));
+                }
+            }
+            res.add(subset);
+        }
+        Collections.sort(res);
+        return res;
     }
 }
