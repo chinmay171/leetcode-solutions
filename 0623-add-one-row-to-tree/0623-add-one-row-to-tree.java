@@ -30,6 +30,7 @@ class Solution {
             
             tempL.left = rootLeft;
             tempR.right = rootRight;
+            return;
         }
         dfs(root.left, val, depth, currDepth + 1);
         dfs(root.right, val, depth, currDepth + 1);
