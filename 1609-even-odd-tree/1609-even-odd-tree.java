@@ -17,7 +17,6 @@ class Solution {
     public boolean isEvenOddTree(TreeNode root) {
         Queue<TreeNode> q = new ArrayDeque<>();
         q.add(root);
-        boolean ans = true;
         int level = 0;
         
         while(q.size() > 0){
@@ -25,13 +24,13 @@ class Solution {
                 TreeNode top = q.remove();
                 
                 if(level % 2 == 0){     // even
-                    if(top.val % 2 != 1) ans = false;
+                    if(top.val % 2 != 1) return false;
                     if(i > 1 && top.val >= q.peek().val)
-                        ans = false;
+                        return false;
                 }else{                  // odd
-                    if(top.val % 2 != 0) ans = false;
+                    if(top.val % 2 != 0) return false;
                     if(i > 1 && top.val <= q.peek().val)
-                        ans = false;
+                        return false;
                 }
                 
                 if(top.left != null) q.add(top.left);
@@ -40,7 +39,7 @@ class Solution {
             level++;
         }
         
-        return ans;
+        return true;
         
     }
 }
