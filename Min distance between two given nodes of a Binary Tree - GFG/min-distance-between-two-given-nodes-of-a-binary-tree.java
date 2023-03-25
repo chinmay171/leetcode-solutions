@@ -123,21 +123,21 @@ class GfG {
     }
     
     public static int dfs(Node root, int t){
-        if(root == null) return 0;
-        if(root.data == t) return 1;
+        if(root == null) return -1;
+        if(root.data == t) return 0;
         
         int left = dfs(root.left, t);
         int right = dfs(root.right, t);
         
-        if(left != 0) return left + 1;
-        if(right != 0) return right + 1;
-        return left + right;
-}
+        if(left != -1) return left + 1;
+        if(right != -1) return right + 1;
+        return -1;
+    }
     
     int findDist(Node root, int a, int b) {
         Node lca = findLCA(root, a, b);
-        int distA = dfs(lca, a) - 1;
-        int distB = dfs(lca, b) - 1;
+        int distA = dfs(lca, a);
+        int distB = dfs(lca, b);
         return distA + distB;
     }
 }
