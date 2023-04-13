@@ -1,35 +1,22 @@
 class Solution {
-    public void printPaths(int src, int dest, List<Integer> path, List<List<Integer>> paths, int[][] graph, boolean[] vis){
-        
-        if(vis[src] == true)return;
-        
-        vis[src] = true;
-        path.add(src);
-        
+    List<List<Integer>> ans = new ArrayList<>();
+    
+    public void dfs(int src, int dest, int[][] graph, List<Integer> curr){
         if(src == dest){
-            paths.add(new ArrayList<>(path));
+            curr.add(dest);
+            ans.add(new ArrayList<>(curr));
+            curr.remove(Integer.valueOf(dest));
+            return;
         }
         
+        curr.add(src);
         for(int nbr : graph[src]){
-            printPaths(nbr, dest, path, paths, graph, vis);
+            dfs(nbr, dest, graph, curr);
         }
-        
-        vis[src] = false;
-        path.remove(path.size() -1);
+        curr.remove(Integer.valueOf(src));
     }
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
-        List<Integer> path = new ArrayList<>();
-        List<List<Integer>> paths = new ArrayList<>();
-        
-        boolean[] vis = new boolean[graph.length];
-        
-        printPaths(0, graph.length - 1, path, paths, graph, vis);
-        return paths;
-        
-        
-//         List<List<Integer>> paths = new ArrayList<>();
-        
-        
-//         printPaths(0, graph)
+        dfs(0, graph.length-1, graph, new ArrayList<Integer>());
+        return ans;
     }
 }
