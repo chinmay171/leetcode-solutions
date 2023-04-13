@@ -46,7 +46,7 @@ class Solution {
             ans.add(top);
             vis[top] = true;
             for(Integer nbr : adj.get(top)){
-                if(vis[nbr] == false) q.add(nbr); 
+                q.add(nbr); 
             }
         }
         
