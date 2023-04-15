@@ -47,8 +47,9 @@ class Solution
         currVis += 1;
         for(Integer nbr : adj[src])
             if(dfs(nbr, adj, vis, currVis) == true) return true;
+            
         vis[src] = false;
-        currVis -= 1;
+        // currVis -= 1;
         return false;
     }
     
@@ -57,10 +58,8 @@ class Solution
         ArrayList<Integer>[] adj = new ArrayList[N];
         for(int i = 0; i < N; ++i) adj[i] = new ArrayList<>();
 
-        // System.out.println(adj.length);
         for(int i = 0; i < Edges.size(); ++i){
             ArrayList<Integer> edge = Edges.get(i);
-            // System.out.println(edge.get(0) + " " + edge.get(1));
             adj[edge.get(0)-1].add(edge.get(1)-1);
             adj[edge.get(1)-1].add(edge.get(0)-1);
         }
