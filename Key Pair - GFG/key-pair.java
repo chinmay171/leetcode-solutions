@@ -37,13 +37,14 @@ public class Main {
 
 class Solution {
     boolean hasArrayTwoCandidates(int arr[], int n, int x) {
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        
-        for(int i = 0; i < n; ++i){
-            if(hm.containsKey(x - arr[i]) == true){
-                return true;
-            }
-            hm.put(arr[i], i);
+        int left = 0;
+        int right = n-1;
+        Arrays.sort(arr);
+        while(left < right){
+            int sum = arr[left] + arr[right];
+            if(sum == x) return true;
+            else if(sum < x) left++;
+            else right--;
         }
         
         return false;
