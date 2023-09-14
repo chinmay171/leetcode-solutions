@@ -1,10 +1,6 @@
 class Solution {
     List<String> path = new ArrayList<>();
     public void dfs(String src, HashMap<String , PriorityQueue<String>> adj){
-        // for(String nbr : adj.get(src)){
-        //     adj.get(src).remove();
-        //     dfs(nbr, adj);
-        // }
         while(adj.get(src).size() > 0){
             String nbr = adj.get(src).remove();
             dfs(nbr, adj);
