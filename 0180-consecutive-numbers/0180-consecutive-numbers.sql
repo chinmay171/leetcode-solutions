@@ -10,7 +10,7 @@ WHERE (l.num = l.1stNext) AND (l.num = l.2ndNext);
 # THIS WILL FIRST JUST NEXT NUM FROM LOG
 # AND THEN AGAIN CHECK THE NEXT NUM FROM
 # THE NESTED TABLE FORMED IN FIRST STEP.
-# 15 test cases passed out of 21 overall
+# 20 test cases passed out of 21 overall
 
 # SELECT l2.nextnext_num AS ConsecutiveNums
 # FROM (SELECT l1.num, l1.next_num,
