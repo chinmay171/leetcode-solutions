@@ -28,6 +28,6 @@ class Solution {
 
             if (total < 0)
                 return (int)(kadane(twice) % m);
-            return (int)((kadane(twice) + (k - 2l) * total) % m);
+            return (int)((kadane(twice) + (k - 2) * total) % m);
     }
 }
