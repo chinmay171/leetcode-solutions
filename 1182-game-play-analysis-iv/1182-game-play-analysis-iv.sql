@@ -1,4 +1,5 @@
 # Write your MySQL query statement below
+# Write your MySQL query statement below
 # COUNT ALL DISTINCT PLAYERS
 # COUNT PLAYER WHO LOGGED IN ON TWO CONSECUTIVE DAYS
 # ROUND(2ND QUERY / 1ST QUERY, 2)
