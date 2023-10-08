@@ -35,7 +35,7 @@ class Solution {
                 if(top.right != null) q.add(top.right);
                 
                 if(i != 1) top.next = q.peek();
-                else top.next = null;
+                // else top.next = null;
             }
         }
 
