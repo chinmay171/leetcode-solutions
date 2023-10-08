@@ -27,23 +27,15 @@ class Solution {
         Queue<Node> q = new ArrayDeque<>();
         q.add(root);
 
-        // Node ans = root;
         while(q.size() > 0){
             for(int i = q.size(); i > 0; i--){
                 Node top = q.remove();
 
-                if(top.left != null){
-                    q.add(top.left);
-                }
-                if(top.right != null){
-                    q.add(top.right);
-                }
-                // System.out.println(i);
-                if(i == 1){
-                    // System.out.println("hello");
-                    top.next = null;
-                    break;
-                }else top.next = q.peek();
+                if(top.left != null) q.add(top.left);
+                if(top.right != null) q.add(top.right);
+                
+                if(i != 1) top.next = q.peek();
+                else top.next = null;
             }
         }
 
