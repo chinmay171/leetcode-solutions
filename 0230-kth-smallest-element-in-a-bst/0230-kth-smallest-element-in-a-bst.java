@@ -14,17 +14,20 @@
  * }
  */
 class Solution {
-    int ans = 0;
+    int ans;
     int count = 0;
+
     public void dfs(TreeNode root, int k){
         if(root == null) return;
-        
-        dfs(root.left , k);
+
+        dfs(root.left, k);
         count++;
         if(count == k) ans = root.val;
         dfs(root.right, k);
     }
+
     public int kthSmallest(TreeNode root, int k) {
+        ans = -1;
         dfs(root, k);
         return ans;
     }
