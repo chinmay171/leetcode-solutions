@@ -20,16 +20,12 @@ class Solution {
         if(root == null) return;
 
         dfs(root.left, k);
-        if(set.contains(k - root.val)){
-            ans = true;
-            return;
-        }
+        if(set.contains(k - root.val)) ans = true;
         set.add(root.val);
         dfs(root.right, k);
     }
 
     public boolean findTarget(TreeNode root, int k) {
-        // if(root == null || (root.left == null && root.right == null)) return ans;
         dfs(root, k);
         return ans;
     }
