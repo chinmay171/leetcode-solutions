@@ -8,44 +8,47 @@
  * }
  */
 public class Codec {
-
+    String code = "";
     // Encodes a tree to a single string.
-    String serialized = "";
-    public String serialize(TreeNode root) {
-        if(root == null){
-            serialized = serialized + "N,";
-            return serialized;
-        }
-        // System.out.println(serialized);
 
-        serialized = serialized + root.val + ",";
-        serialize(root.left);
-        serialize(root.right);
-        
-        return serialized;
+    public void dfs1(TreeNode root){
+        if(root == null){
+            code += "N,";
+            return;
+        }
+
+        code += root.val + ",";
+
+        dfs1(root.left);
+        dfs1(root.right);
     }
-    
+
+    public String serialize(TreeNode root) {
+        dfs1(root);
+        return code;
+    }
+
     // Decodes your encoded data to tree.
-    
     int idx = 0;
-    public TreeNode dfs(String[] nodes){
-        if(idx == nodes.length) return null;
-        if(nodes[idx].equals("N")){
+    public TreeNode dfs2(String[] data){
+        if(idx == data.length) return null;
+
+        if(data[idx].equals("N")){
             idx++;
             return null;
         }
-        
-        int val = Integer.parseInt(nodes[idx++]);
-        
+
+        int val = Integer.parseInt(data[idx++]);
         TreeNode curr = new TreeNode(val);
-        curr.left = dfs(nodes);
-        curr.right = dfs(nodes);
-        
+        curr.left = dfs2(data);
+        curr.right = dfs2(data);
+
         return curr;
     }
+
     public TreeNode deserialize(String data) {
-        String[] nodes = data.split(",");
-        return dfs(nodes);
+        String[] arr = data.split(",");
+        return dfs2(arr);
     }
 }
 
