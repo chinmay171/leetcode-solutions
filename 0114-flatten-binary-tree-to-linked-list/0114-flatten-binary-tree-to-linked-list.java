@@ -14,32 +14,29 @@
  * }
  */
 class Solution {
-    TreeNode linkedList = new TreeNode(-1);
-    
+
     public void dfs(TreeNode root){
         if(root == null) return;
-        
-        linkedList.right = new TreeNode(root.val);
-        linkedList = linkedList.right;
-        if(root.left != null) 
-            dfs(root.left);
-        if(root.right != null) 
-            dfs(root.right);
-    }
-    
-    public void flatten(TreeNode root) {
-        if(root == null) return;
-        
-        TreeNode head = linkedList;
-        dfs(root);
-        
-        head = head.right;
-        head = head.right;
-        while(head != null){
+
+        if(root.left != null){
+            TreeNode l = root.left;
+            TreeNode r = root.right;
+
             root.left = null;
-            root.right = head;
-            root = root.right;
-            head = head.right;
+            root.right = null;
+
+            root.right = l;
+            TreeNode temp = root;
+            while(temp.right != null){
+                temp = temp.right;
+            }
+            temp.right = r;
         }
+
+        dfs(root.right);
+    }
+
+    public void flatten(TreeNode root) {
+        dfs(root);
     }
 }
