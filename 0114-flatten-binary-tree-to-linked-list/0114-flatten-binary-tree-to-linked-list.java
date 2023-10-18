@@ -27,9 +27,7 @@ class Solution {
 
             root.right = l;
             TreeNode temp = root;
-            while(temp.right != null){
-                temp = temp.right;
-            }
+            while(temp.right != null) temp = temp.right;
             temp.right = r;
         }
 
