@@ -7,7 +7,7 @@ class Solution {
 
         for(Object nbr : adj[src]){
             if(dfs((int)nbr, adj, vis) == false) return false;
-            vis[(int)nbr] = 2;
+            // vis[(int)nbr] = 2;
         }
         vis[src] = 2;
         return true;
