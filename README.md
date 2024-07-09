@@ -6,6 +6,7 @@
 |  |
 | ------- |
 | [0053-maximum-subarray](https://github.com/chinmay171/leetcode-solutions/tree/master/0053-maximum-subarray) |
+| [0496-next-greater-element-i](https://github.com/chinmay171/leetcode-solutions/tree/master/0496-next-greater-element-i) |
 ## Divide and Conquer
 |  |
 | ------- |
@@ -30,6 +31,7 @@
 |  |
 | ------- |
 | [0141-linked-list-cycle](https://github.com/chinmay171/leetcode-solutions/tree/master/0141-linked-list-cycle) |
+| [0496-next-greater-element-i](https://github.com/chinmay171/leetcode-solutions/tree/master/0496-next-greater-element-i) |
 ## Recursion
 |  |
 | ------- |
@@ -38,4 +40,12 @@
 |  |
 | ------- |
 | [0151-reverse-words-in-a-string](https://github.com/chinmay171/leetcode-solutions/tree/master/0151-reverse-words-in-a-string) |
+## Stack
+|  |
+| ------- |
+| [0496-next-greater-element-i](https://github.com/chinmay171/leetcode-solutions/tree/master/0496-next-greater-element-i) |
+## Monotonic Stack
+|  |
+| ------- |
+| [0496-next-greater-element-i](https://github.com/chinmay171/leetcode-solutions/tree/master/0496-next-greater-element-i) |
 <!---LeetCode Topics End-->
