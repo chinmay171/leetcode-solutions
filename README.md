@@ -7,6 +7,7 @@
 | ------- |
 | [0001-two-sum](https://github.com/chinmay171/leetcode-solutions/tree/master/0001-two-sum) |
 | [0053-maximum-subarray](https://github.com/chinmay171/leetcode-solutions/tree/master/0053-maximum-subarray) |
+| [0088-merge-sorted-array](https://github.com/chinmay171/leetcode-solutions/tree/master/0088-merge-sorted-array) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/chinmay171/leetcode-solutions/tree/master/0121-best-time-to-buy-and-sell-stock) |
 | [0496-next-greater-element-i](https://github.com/chinmay171/leetcode-solutions/tree/master/0496-next-greater-element-i) |
 ## Divide and Conquer
@@ -27,6 +28,7 @@
 ## Two Pointers
 |  |
 | ------- |
+| [0088-merge-sorted-array](https://github.com/chinmay171/leetcode-solutions/tree/master/0088-merge-sorted-array) |
 | [0141-linked-list-cycle](https://github.com/chinmay171/leetcode-solutions/tree/master/0141-linked-list-cycle) |
 | [0151-reverse-words-in-a-string](https://github.com/chinmay171/leetcode-solutions/tree/master/0151-reverse-words-in-a-string) |
 | [0908-middle-of-the-linked-list](https://github.com/chinmay171/leetcode-solutions/tree/master/0908-middle-of-the-linked-list) |
@@ -52,4 +54,8 @@
 |  |
 | ------- |
 | [0496-next-greater-element-i](https://github.com/chinmay171/leetcode-solutions/tree/master/0496-next-greater-element-i) |
+## Sorting
+|  |
+| ------- |
+| [0088-merge-sorted-array](https://github.com/chinmay171/leetcode-solutions/tree/master/0088-merge-sorted-array) |
 <!---LeetCode Topics End-->
