@@ -1,51 +1,84 @@
 class Solution {
-    public void mergeSort(int[] nums, int left, int right){
-        if(left >= right){
-            return;
-        }
+
+    public int[] sortingTwoArray(int[] leftArray, int[] rightArray){
+        int[] afterSorting = new int[leftArray.length + rightArray.length];
         
-        int mid = left+(right-left)/2;
-        mergeSort(nums, left, mid);
-        mergeSort(nums, mid+1, right);
-        
-        merge(nums, left, mid, mid+1, right);
-    }
-    
-    public void merge(int[] nums, int a1L, int a1R, int a2L, int a2R){
-        int resSize = (a1R-a1L+1)+(a2R-a2L+1);
-        int[] res = new int[resSize];
-        
-        int i = a1L; 
-        int j = a2L; 
+        int i = 0;
+        int j = 0;
         int k = 0;
-        while(i <= a1R && j <= a2R){
-            if(nums[i] <= nums[j]){
-                res[k] = nums[i];
+        while(i < leftArray.length && j < rightArray.length){
+            if(leftArray[i] < rightArray[j]){
+                afterSorting[k] = leftArray[i];
                 i++;
-                k++;
             }else{
-                res[k] = nums[j];
+                afterSorting[k] = rightArray[j];
                 j++;
-                k++;
             }
+            k++;
         }
-        while(i <= a1R){
-            res[k] = nums[i];
-                i++;
-                k++;
+
+        while(i < leftArray.length){
+            afterSorting[k] = leftArray[i];
+            i++;
+            k++;
         }
-        while(j <= a2R){
-            res[k] = nums[j];
-                j++;
-                k++;
+        while(j < rightArray.length){
+            afterSorting[k] = rightArray[j];
+            j++;
+            k++;
         }
-        for(int x = a1L; x <= a2R; ++x){
-            nums[x] = res[x - a1L];
-        }
+
+        return afterSorting;
     }
-    
+
+    public int[] mergeSort(int[] nums, int left, int right){
+        if(left == right) return new int[]{nums[left]};
+
+        int mid = (left + right) / 2;
+        int[] leftSortedArray = mergeSort(nums,left, mid);
+        int[] rightSortedArray = mergeSort(nums, mid + 1, right);
+
+        return sortingTwoArray(leftSortedArray, rightSortedArray);
+    }
+
     public int[] sortArray(int[] nums) {
-        mergeSort(nums, 0, nums.length-1);
-        return nums;
+
+        return mergeSort(nums, 0, nums.length - 1);
+        
+        // SELECTION SORT       
+        // for(int i = 0; i < nums.length; ++i){
+        //     int minIdx = i;
+        //     for(int j = i + 1; j < nums.length; ++j)
+        //         if(nums[minIdx] > nums[j]) minIdx = j;
+        //     int temp = nums[i];
+        //     nums[i] = nums[minIdx];
+        //     nums[minIdx] = temp;
+        // }
+        // return nums;
+
+        // BUBBLE SORT
+        // for(int i = 0; i < nums.length; ++i){
+        //     for(int j = 0; j < nums.length-i-1; ++j){
+        //         if(nums[j] > nums[j+1]){
+        //             int temp = nums[j];
+        //             nums[j] = nums[j+1];
+        //             nums[j+1] = temp;
+        //         }
+        //     }
+        // }
+        // return nums;
+
+        // INSERTION SORT
+        // for(int i = 0; i < nums.length; ++i){
+        //     int j = i;
+        //     while(j > 0 && nums[j-1] > nums[j]){
+        //         int temp = nums[j];
+        //         nums[j] = nums[j-1];
+        //         nums[j-1] = temp;
+
+        //         j--;
+        //     }
+        // }
+        // return nums;
     }
-} 
+}
