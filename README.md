@@ -5,6 +5,7 @@
 ## Array
 |  |
 | ------- |
+| [0001-two-sum](https://github.com/chinmay171/leetcode-solutions/tree/master/0001-two-sum) |
 | [0053-maximum-subarray](https://github.com/chinmay171/leetcode-solutions/tree/master/0053-maximum-subarray) |
 | [0496-next-greater-element-i](https://github.com/chinmay171/leetcode-solutions/tree/master/0496-next-greater-element-i) |
 ## Divide and Conquer
@@ -30,6 +31,7 @@
 ## Hash Table
 |  |
 | ------- |
+| [0001-two-sum](https://github.com/chinmay171/leetcode-solutions/tree/master/0001-two-sum) |
 | [0141-linked-list-cycle](https://github.com/chinmay171/leetcode-solutions/tree/master/0141-linked-list-cycle) |
 | [0496-next-greater-element-i](https://github.com/chinmay171/leetcode-solutions/tree/master/0496-next-greater-element-i) |
 ## Recursion
