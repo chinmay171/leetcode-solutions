@@ -6,6 +6,7 @@
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/chinmay171/leetcode-solutions/tree/master/0001-two-sum) |
+| [0011-container-with-most-water](https://github.com/chinmay171/leetcode-solutions/tree/master/0011-container-with-most-water) |
 | [0053-maximum-subarray](https://github.com/chinmay171/leetcode-solutions/tree/master/0053-maximum-subarray) |
 | [0088-merge-sorted-array](https://github.com/chinmay171/leetcode-solutions/tree/master/0088-merge-sorted-array) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/chinmay171/leetcode-solutions/tree/master/0121-best-time-to-buy-and-sell-stock) |
@@ -30,6 +31,7 @@
 ## Two Pointers
 |  |
 | ------- |
+| [0011-container-with-most-water](https://github.com/chinmay171/leetcode-solutions/tree/master/0011-container-with-most-water) |
 | [0088-merge-sorted-array](https://github.com/chinmay171/leetcode-solutions/tree/master/0088-merge-sorted-array) |
 | [0141-linked-list-cycle](https://github.com/chinmay171/leetcode-solutions/tree/master/0141-linked-list-cycle) |
 | [0151-reverse-words-in-a-string](https://github.com/chinmay171/leetcode-solutions/tree/master/0151-reverse-words-in-a-string) |
@@ -81,4 +83,8 @@
 |  |
 | ------- |
 | [0948-sort-an-array](https://github.com/chinmay171/leetcode-solutions/tree/master/0948-sort-an-array) |
+## Greedy
+|  |
+| ------- |
+| [0011-container-with-most-water](https://github.com/chinmay171/leetcode-solutions/tree/master/0011-container-with-most-water) |
 <!---LeetCode Topics End-->
